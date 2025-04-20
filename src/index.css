@@ -2,20 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
-@keyframes gradient {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+@layer base {
+  body {
+    @apply bg-black text-white font-poppins antialiased;
+  }
 }
 
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: black;
+@layer utilities {
+  .gradient-text {
+    @apply bg-gradient-to-r from-custom-red-400 via-custom-red-500 to-custom-red-600 bg-clip-text text-transparent;
+  }
 }
 
 ::-webkit-scrollbar {
@@ -23,21 +21,22 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #000000;
-  border-radius: 5px;
+  @apply bg-black;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(45deg, #5c0000, #7a0000);
-  border-radius: 5px;
-  border: 2px solid #000000;
+  @apply bg-gradient-to-b from-custom-red-700 to-custom-red-900 rounded-full border-2 border-black;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(45deg, #7a0000, #990000);
+  @apply from-custom-red-600 to-custom-red-800;
 }
 
 ::selection {
-  background: rgba(220, 38, 38, 0.7);
-  color: white;
+  @apply bg-custom-red-500/70 text-white;
+}
+
+.backdrop-blur-md {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
